@@ -3,39 +3,50 @@
 
   <div class="max-w-2xl mx-auto bg-slate-800 p-6 rounded-xl border border-slate-700 mb-10">
     <div class="flex gap-4">
-      <input [(ngModel)]="novoTime.nome" placeholder="Nome do Time" class="flex-1 bg-slate-700 p-3 rounded border border-slate-600 focus:outline-none focus:border-cyan-500">
-      <select [(ngModel)]="novoTime.jogo" class="bg-slate-700 p-3 rounded border border-slate-600">
+      <input [(ngModel)]="novoTime.nome" placeholder="Nome do Time"
+        class="flex-1 bg-slate-700 p-3 rounded border border-slate-600 focus:outline-none focus:border-cyan-500">
+      <select [(ngModel)]="novoTime.jogo"
+        class="bg-slate-700 p-3 rounded border border-slate-600 focus:outline-none focus:border-cyan-500 text-white">
         <option value="">Selecione o Jogo</option>
-        <option value="Valorant">Valorant</option>
+
         <option value="Free Fire">Free Fire</option>
+        <option value="Valorant">Valorant</option>
+        <option value="Honor of Kings">Honor of Kings</option>
+        <option value="League of Legends">League of Legends</option>
+        <option value="Counter-Strike 2">Counter-Strike 2</option>
+        <option value="EA FC 26">EA FC 26</option>
+        <option value="Roblox">Roblox (E-sports)</option>
+        <option value="Mobile Legends">Mobile Legends</option>
+        <option value="Wild Rift">LoL: Wild Rift</option>
+        <option value="Rocket League">Rocket League</option>
       </select>
-      <button (click) ="adicionar()" class="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded font-bold transition">ADICIONAR</button>
+      <button (click)="adicionar()"
+        class="bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded font-bold transition">ADICIONAR</button>
     </div>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div *ngFor="let t of times" 
-      [ngClass]="{
+    <div *ngFor="let t of times" [ngClass]="{
         'border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.3)]': t.rank === 'Ouro',
         'border-slate-300 shadow-[0_0_15px_rgba(203,213,225,0.3)]': t.rank === 'Prata',
         'border-orange-800': t.rank === 'Bronze'
-      }"
-      class="bg-slate-800 border-2 p-5 rounded-2xl relative transition-all duration-500">
-      
+      }" class="bg-slate-800 border-2 p-5 rounded-2xl relative transition-all duration-500">
+
       <button (click)="remover(t.id)" class="absolute top-2 right-4 text-slate-500 hover:text-red-500">x</button>
-      
+
       <span class="text-xs font-bold px-2 py-1 bg-slate-700 rounded uppercase">{{ t.jogo }}</span>
       <h2 class="text-2xl font-black mt-2">{{ t.nome }}</h2>
-      
+
       <div class="mt-6 flex justify-between items-end">
         <div>
           <p class="text-xs text-slate-400 uppercase">Status</p>
-          <p class="text-xl font-bold tracking-widest" 
-             [ngClass]="{'text-amber-400': t.rank === 'Ouro', 'text-slate-300': t.rank === 'Prata'}">
+          <p class="text-xl font-bold tracking-widest"
+            [ngClass]="{'text-amber-400': t.rank === 'Ouro', 'text-slate-300': t.rank === 'Prata'}">
             {{ t.rank }}
           </p>
         </div>
-        <button (click)="vitoria(t.id)" class="bg-slate-700 hover:bg-white hover:text-black px-4 py-2 rounded-lg font-bold transition-all">
+        <button (click)="vitoria(t.id)"
+          class="bg-slate-700 hover:bg-white hover:text-black px-4 py-2 rounded-lg font-bold transition-all">
           🏆 +1 VITÓRIA
         </button>
       </div>
