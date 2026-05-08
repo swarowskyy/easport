@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'; // Para usar *ngFor e [ngClass]
 import { FormsModule } from '@angular/forms'; // Para usar [(ngModel)]
 import { TimeService } from './services/time';
 import { Time } from '../models/time.model';
+import confetti from 'canvas-confetti'; // Importe os fogos
 
 
 @Component({
@@ -30,10 +31,33 @@ export class App implements OnInit {
     });
   }
 
-  vitoria(id: number) {
-    this.timeService.registrarVitoria(id).subscribe(() => this.atualizarLista());
+vitoria(id: number) {
+    this.timeService.registrarVitoria(id).subscribe(() => {
+      this.atualizarLista();
+      this.soltarFogos(); // Chama o efeito aqui!
+    });
   }
+soltarFogos() {
+    const duracao = 3 * 1000; // 3 segundos
+    const fim = Date.now() + duracao;
 
+    const intervalo = setInterval(() => {
+      const tempoRestante = fim - Date.now();
+
+      if (tempoRestante <= 0) {
+        return clearInterval(intervalo);
+      }
+
+      // Configuração estilo "Fireworks"
+      confetti({
+        particleCount: 50,
+        startVelocity: 30,
+        spread: 360,
+        origin: { x: Math.random(), y: Math.random() - 0.2 },
+        colors: ['#22d3ee', '#d946ef', '#ffffff'] // Cores Neon (Cyan, Fuchsia, Branco)
+      });
+    }, 250);
+  }
   remover(id: number) {
     this.timeService.excluir(id).subscribe(() => this.atualizarLista());
   }
