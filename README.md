@@ -1,4 +1,4 @@
-# Arena Pro-Player BR
+# Torneio e-games
 
 Sistema Full Stack desenvolvido com:
 
@@ -9,6 +9,8 @@ Sistema Full Stack desenvolvido com:
 O projeto simula um sistema de gerenciamento de times de E-sports.
 
 ---
+
+[Emu especialista](https://gemini.google.com/gem/85e3dd4488c1)
 
 # Objetivo do Projeto
 
