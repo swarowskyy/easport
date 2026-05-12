@@ -20,14 +20,20 @@ export class Time {
     return 'Ouro';
   }
   create(dto: any) {
+    console.log('Dados que chegaram do Frontend:', dto);
   const novoTime = {
     id: crypto.randomUUID(),
     ...dto,
     vitorias: 0,
     rank: 'Bronze',
     treinador: dto.treinador || 'Sem Treinador' // <-- GARANTE O ARMAZENAMENTO
+
+     id: Math.random().toString(36).substr(2, 9), // Gera um ID aleatório simples
+    nome: dto.nome,
+    jogo: dto.jogo,
+    treinador: dto.treinador, // <--- O SEU NOVO CAMPO ENTRA AQUI!
+    vitorias: 0,
+    rank: 'Bronze'
   };
-  this.jogo.(novoTime);
-  return novoTime;
-}
+  }
 }

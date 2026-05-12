@@ -64,6 +64,7 @@ export class TimesService {
    * significa um array do tipo Time
    */
   private times: Time[] = [];
+  private teams: any[] = [];
 
 
 
