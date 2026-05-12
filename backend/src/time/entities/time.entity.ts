@@ -4,6 +4,7 @@ export class Time {
   jogo: string;
   vitorias: number;
   treinador: string;
+  pais:string;
 
   constructor(dados?: Partial<Time>) {
     this.id = dados?.id || 0;
@@ -14,8 +15,8 @@ export class Time {
 
   // Método para o Front-end saber o nível do time
   get rank(): string {
-    if (this.vitorias < 5) return 'Bronze';
-    if (this.vitorias <= 10) return 'Prata';
+    if (this.vitorias < 4) return 'Bronze';
+    if (this.vitorias <= 8) return 'Prata';
     return 'Ouro';
   }
   create(dto: any) {
