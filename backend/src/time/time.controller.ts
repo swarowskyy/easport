@@ -49,61 +49,12 @@ import { TimesService } from './time.service';
 // Todas as rotas começarão com "/times"
 @Controller('times')
 export class TimesController {
-
-
-
-
-  /**
-   * Construtor da classe
-   * 
-   * Injeta automaticamente o TimesService
-   * usando o sistema de Dependency Injection do NestJS.
-   * 
-   * "private readonly" faz:
-   * - private  -> acessível apenas dentro da classe
-   * - readonly -> não pode ser alterado
-   */
   constructor(private readonly timesService: TimesService) {}
-
-
-
-
-  /**
-   * ============================================================
-   * LISTAR TIMES
-   * ============================================================
-   * 
-   * ROTA:
-   * GET /times
-   * 
-   * Objetivo:
-   * Retorna todos os times cadastrados.
-   */
   @Get()
   listar() {
-
-    // Chama o método findAll() do service
-    // para buscar todos os times
     return this.timesService.findAll();
   }
 
-
-
-
-  /**
-   * ============================================================
-   * CRIAR TIME
-   * ============================================================
-   * 
-   * ROTA:
-   * POST /times
-   * 
-   * Objetivo:
-   * Cria um novo time.
-   * 
-   * O @Body() captura os dados enviados
-   * no corpo da requisição.
-   */
   @Post()
   criar(@Body() dados: Partial<Time>) {
 
@@ -111,51 +62,16 @@ export class TimesController {
     return this.timesService.create(dados);
   }
 
-
-
-
-  /**
-   * ============================================================
-   * ADICIONAR VITÓRIA
-   * ============================================================
-   * 
-   * ROTA:
-   * PATCH /times/:id/vitoria
-   * 
-   * Exemplo:
-   * PATCH /times/1/vitoria
-   * 
-   * Objetivo:
-   * Soma uma vitória ao time informado.
-   * 
-   * O @Param('id') pega o parâmetro da URL.
-   */
   @Patch(':id/vitoria')
   vitoria(@Param('id') id: string) {
 
     // O "+" converte string para número
     // Exemplo:
     // "1" -> 1
+     console.log('Time criado com sucesso:', this.vitoria);
     return this.timesService.adicionarVitoria(+id);
   }
 
-
-
-
-  /**
-   * ============================================================
-   * REMOVER TIME
-   * ============================================================
-   * 
-   * ROTA:
-   * DELETE /times/:id
-   * 
-   * Exemplo:
-   * DELETE /times/1
-   * 
-   * Objetivo:
-   * Remove um time pelo ID.
-   */
   @Delete(':id')
   remover(@Param('id') id: string) {
 
