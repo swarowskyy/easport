@@ -76,7 +76,10 @@ export class TimesService {
    * Objetivo:
    * Retornar todos os times cadastrados.
    */
-  findAll() {
+  // Exemplo de como deve estar no seu service:
+findAll() {
+  return this.times.sort((a, b) => a.vitorias - b.vitorias);
+
 
     /**
      * map():
