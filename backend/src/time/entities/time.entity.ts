@@ -3,6 +3,7 @@ export class Time {
   nome: string;
   jogo: string;
   vitorias: number;
+  treinador: string;
 
   constructor(dados?: Partial<Time>) {
     this.id = dados?.id || 0;
@@ -17,4 +18,15 @@ export class Time {
     if (this.vitorias <= 10) return 'Prata';
     return 'Ouro';
   }
+  create(dto: any) {
+  const novoTime = {
+    id: crypto.randomUUID(),
+    ...dto,
+    vitorias: 0,
+    rank: 'Bronze',
+    treinador: dto.treinador || 'Sem Treinador' // <-- GARANTE O ARMAZENAMENTO
+  };
+  this.jogo.(novoTime);
+  return novoTime;
+}
 }
