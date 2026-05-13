@@ -32,16 +32,8 @@
 // Importa o NestFactory
 // responsável por criar a aplicação NestJS
 import { NestFactory } from '@nestjs/core';
-
-
-
-
 // Importa o módulo principal da aplicação
 import { AppModule } from './app.module';
-
-
-
-
 /**
  * ============================================================
  * FUNÇÃO BOOTSTRAP
@@ -59,10 +51,6 @@ import { AppModule } from './app.module';
  * para inicialização do servidor.
  */
 async function bootstrap() {
-
-
-
-
   /**
    * ============================================================
    * CRIAÇÃO DA APLICAÇÃO
@@ -78,10 +66,6 @@ async function bootstrap() {
    * espera a aplicação ser criada.
    */
   const app = await NestFactory.create(AppModule);
-
-
-
-
   /**
    * ============================================================
    * HABILITAR CORS
@@ -99,10 +83,6 @@ async function bootstrap() {
    * o navegador bloqueia a comunicação.
    */
   app.enableCors();
-
-
-
-
   /**
    * ============================================================
    * INICIAR SERVIDOR
@@ -123,10 +103,6 @@ async function bootstrap() {
    */
   await app.listen(process.env.PORT ?? 3000);
 }
-
-
-
-
 /**
  * ============================================================
  * EXECUTA A APLICAÇÃO
